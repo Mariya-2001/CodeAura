@@ -17,11 +17,11 @@ public FeedbackTicketService feedbackTicketService;
 
 // 1. POST Endpoint (Create Team)
 
-        // 2. GET Endpoint (View Team)
-        @GetMapping
-public ResponseEntity<List<Feedback>> getAll() {
-return ResponseEntity.status(HttpStatus.ACCEPTED).body(feedbackTicketService.getAllFeedbacks());
-}
+   // 2. GET Endpoint (View All)
+ @GetMapping
+ public ResponseEntity<List<Feedback>> getAll() {
+   return ResponseEntity.status(HttpStatus.ACCEPTED).body(feedbackTicketService.getAllFeedbacks());
+        }
 
 // 3. PUT Endpoint (Edit Team)
 
