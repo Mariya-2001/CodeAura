@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -20,32 +19,17 @@ public class FeedbackTicketController {
     @PostMapping
     public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback) {
 
-        // Call service to create and store feedback
-        Feedback createdFeedback = feedbackTicketService.createFeedback(feedback);
+        // Call service to create feedback
+        Feedback created = feedbackTicketService.createFeedback(feedback);
 
-        // Return response with HTTP 201 (Created)
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdFeedback);
+        // Return CREATED status (201)
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    // 2. GET Endpoint (View all feedbacks)
-    @GetMapping
-    public ResponseEntity<List<Feedback>> getAll() {
-        return ResponseEntity.status(HttpStatus.ACCEPTED)
-                .body(feedbackTicketService.getAllFeedbacks());
-    }
+    // 2. GET Endpoint (View Team)
 
-    // 3. PUT Endpoint (Edit Team) - later
+    // 3. PUT Endpoint (Edit Team)
 
-    // 4. DELETE Endpoint
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteFeedback(@PathVariable String id) {
+    // 4. DELETE Endpoint (Your Part)
 
-        boolean isDeleted = feedbackTicketService.deleteFeedback(id);
-
-        if (!isDeleted) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
 }
