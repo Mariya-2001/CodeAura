@@ -27,7 +27,8 @@ public class FeedbackTicketService {
         }
 
         // 2. VIEW ALL
-
+        // 2. VIEW ALL - Returns all feedback entries from in-memory list
+        public List<Feedback> getAllFeedbacks() { return feedbackList; }
     // 3. EDIT (Add method here)
         public Feedback updatedFeedback(
                 String id,
