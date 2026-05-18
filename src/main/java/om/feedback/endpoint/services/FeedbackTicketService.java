@@ -2,42 +2,34 @@ package om.feedback.endpoint.services;
 
 import om.feedback.endpoint.models.Feedback;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID; // Used to generate unique ID
 
 @Service
 public class FeedbackTicketService {
-
-        // Shared In-Memory List (acts like a fake database)
+        // Shared In-Memory List
         private final List<Feedback> feedbackList = new ArrayList<>();
 
-        // 1. CREATE (Add new feedback)
+        // 1. CREATE (Add method here)
         public Feedback createFeedback(Feedback feedback) {
 
-                // Generate unique ID for each feedback
-                String generatedId = UUID.randomUUID().toString();
+                // Generate unique ID for the feedback
+                String id = java.util.UUID.randomUUID().toString();
 
-                // Set the ID into the object
-                feedback.setId(generatedId);
+                // Set the generated ID into the object
+                feedback.setId(id);
 
                 // Store feedback in memory list
                 feedbackList.add(feedback);
 
-                // Return created object
+                // Return the created feedback
                 return feedback;
         }
 
         // 2. VIEW ALL
-        public List<Feedback> getAllFeedbacks() {
-                return feedbackList;
-        }
 
-        // 3. EDIT (Add later if needed)
+        // 3. EDIT (Add method here)
 
         // 4. DELETE
-        public boolean deleteFeedback(String id) {
-                return feedbackList.removeIf(f -> f.getId().equals(id));
-        }
+
 }
