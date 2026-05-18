@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class  {
+public class  FeedbackTicketService{
 
         // Shared In-Memory List
         private final List<Feedback> feedbackList = new ArrayList<>();
