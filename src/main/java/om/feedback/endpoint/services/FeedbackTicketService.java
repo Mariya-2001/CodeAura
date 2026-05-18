@@ -29,7 +29,29 @@ public class FeedbackTicketService {
         // 2. VIEW ALL
 
         // 3. EDIT (Add method here)
+        public Feedback updatedFeedback(
+                String id,
+                Feedback updatedFeedback
+        )
+        {
+                //loop through feedback list
+                for(Feedback feedback : feedbackList){
 
+                        //check matching ID
+                        if(feedback.getId().equals(id)){
+
+                                //update content
+                                feedback.setContent(
+                                        updatedFeedback.getContent()
+                                );
+
+                                //return update object
+                                return feedback;
+                        }
+                }
+                //id not found
+                return null;
+        }
         // 4. DELETE
         public boolean deleteFeedback(String id){
                 return feedbackList.removeIf(feedback -> feedback.getId().equals(id));

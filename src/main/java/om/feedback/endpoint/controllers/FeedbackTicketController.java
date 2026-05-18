@@ -30,6 +30,29 @@ public class FeedbackTicketController {
 
     // 3. PUT Endpoint (Edit Team)
 
+    //put request
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateFeedback(
+
+            @PathVariable String id,
+            @RequestBody Feedback updatedFeedback
+    ) {
+        Feedback result = feedbackTicketService.updatedFeedback(
+                id, updatedFeedback
+        );
+
+        //invalid ID
+        if (result == null) {
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Feedback not found");
+        }
+
+        //Sucess response
+        return ResponseEntity.ok(result);
+
+    }
+
     // 4. DELETE Endpoint
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFeedback(@PathVariable String id) {
