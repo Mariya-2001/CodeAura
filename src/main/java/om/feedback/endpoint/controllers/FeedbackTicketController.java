@@ -37,6 +37,17 @@ public class FeedbackTicketController {
     }
     // 3. PUT Endpoint (Edit Team)
 
-    // 4. DELETE Endpoint (Your Part)
+    // 4. DELETE Endpoint
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteFeedback(@PathVariable String id) {
+
+        boolean isDeleted = feedbackTicketService.deleteFeedback(id);
+
+        if (!isDeleted) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 
 }
