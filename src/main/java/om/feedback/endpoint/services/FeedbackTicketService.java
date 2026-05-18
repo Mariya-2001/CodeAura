@@ -7,6 +7,7 @@ import java.util.List;
 
 @Service
 public class FeedbackTicketService {
+
 // Shared In-Memory List
 //testing :
  private final List<Feedback> feedbackList = new ArrayList<>();
@@ -15,15 +16,32 @@ public class FeedbackTicketService {
   feedbackList.add(new Feedback(UUID.randomUUID().toString(), "The espresso tastes too bitter."));
   feedbackList.add(new Feedback(UUID.randomUUID().toString(), "Great latte art, loved it!"));
         }
-// 1. CREATE (Add method here)
 
-// 2. VIEW ALL - Returns all feedback entries from in-memory list
- public List<Feedback> getAllFeedbacks() { return feedbackList; }
 
-// 3. EDIT (Add method here)
 
-        // 4. DELETE (Your Part)
-        public boolean deleteFeedback(String id) {
-return feedbackList.removeIf(f -> f.getId().equals(id));
-}
+        // 1. CREATE (Add method here)
+        public Feedback createFeedback(Feedback feedback) {
+
+                // Generate unique ID for the feedback
+                String id = java.util.UUID.randomUUID().toString();
+
+                // Set the generated ID into the object
+                feedback.setId(id);
+
+                // Store feedback in memory list
+                feedbackList.add(feedback);
+
+                // Return the created feedback
+                return feedback;
+        }
+
+
+    // 2. VIEW ALL - Returns all feedback entries from in-memory list
+        public List<Feedback> getAllFeedbacks() { return feedbackList; }
+
+
+    // 3. EDIT (Add method here)
+
+        // 4. DELETE
+
 }

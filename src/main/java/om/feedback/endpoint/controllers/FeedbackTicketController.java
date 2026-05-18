@@ -12,26 +12,31 @@ import java.util.List;
 @RequestMapping("/feedbacks")
 public class FeedbackTicketController {
 
-@Autowired
-public FeedbackTicketService feedbackTicketService;
+    @Autowired
+    public FeedbackTicketService feedbackTicketService;
 
-// 1. POST Endpoint (Create Team)
+    // 1. POST Endpoint (Create Feedback)
+    @PostMapping
+    public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback) {
 
-   // 2. GET Endpoint (View All)
- @GetMapping
- public ResponseEntity<List<Feedback>> getAll() {
-   return ResponseEntity.status(HttpStatus.ACCEPTED).body(feedbackTicketService.getAllFeedbacks());
-        }
 
-// 3. PUT Endpoint (Edit Team)
 
-        // 4. DELETE Endpoint (Your Part)
-        @DeleteMapping("/{id}")
-public ResponseEntity<Void> deleteFeedback(@PathVariable String id) {
-boolean isDeleted = feedbackTicketService.deleteFeedback(id);
-if (!isDeleted) {
-return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-}
-return ResponseEntity.status(HttpStatus.OK).build();
-}
+        // Call service to create feedback
+        Feedback created = feedbackTicketService.createFeedback(feedback);
+
+
+        // Return CREATED status (201)
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    // 2. GET Endpoint (View Team)
+//  Retrieves all feedback entries and returns them as JSON
+    @GetMapping
+    public ResponseEntity<List<Feedback>> getAll() {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(feedbackTicketService.getAllFeedbacks());
+    }
+    // 3. PUT Endpoint (Edit Team)
+
+    // 4. DELETE Endpoint (Your Part)
+
 }
