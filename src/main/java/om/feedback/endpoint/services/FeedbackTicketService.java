@@ -31,5 +31,8 @@ public class FeedbackTicketService {
         // 3. EDIT (Add method here)
 
         // 4. DELETE
+        public boolean deleteFeedback(String id){
+                return feedbackList.removeIf(feedback -> feedback.getId().equals(id));
+        }
 
 }
