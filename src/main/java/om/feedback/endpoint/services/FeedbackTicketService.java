@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class FeedbackTicketService {
+public class  {
 
         // Shared In-Memory List
         private final List<Feedback> feedbackList = new ArrayList<>();
