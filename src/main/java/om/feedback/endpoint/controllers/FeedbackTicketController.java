@@ -19,15 +19,22 @@ public class FeedbackTicketController {
     @PostMapping
     public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback) {
 
+
+
         // Call service to create feedback
         Feedback created = feedbackTicketService.createFeedback(feedback);
+
 
         // Return CREATED status (201)
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     // 2. GET Endpoint (View Team)
-
+//  Retrieves all feedback entries and returns them as JSON
+    @GetMapping
+    public ResponseEntity<List<Feedback>> getAll() {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(feedbackTicketService.getAllFeedbacks());
+    }
     // 3. PUT Endpoint (Edit Team)
 
     // 4. DELETE Endpoint
