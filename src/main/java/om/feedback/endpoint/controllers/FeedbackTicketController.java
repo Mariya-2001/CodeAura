@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @RequestMapping("/feedbacks")
@@ -14,6 +15,9 @@ public class FeedbackTicketController {
 
     @Autowired
     public FeedbackTicketService feedbackTicketService;
+    private static final AtomicLong counter = new AtomicLong();
+    private final long id = counter.incrementAndGet();
+
 
     // 1. POST Endpoint (Create Feedback)
     @PostMapping
@@ -45,7 +49,7 @@ public class FeedbackTicketController {
             @RequestBody Feedback updatedFeedback
     ) {
         Feedback result = feedbackTicketService.updatedFeedback(
-                id, updatedFeedback
+                Long.valueOf(id), updatedFeedback
         );
 
         //invalid ID
