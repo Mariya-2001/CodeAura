@@ -31,7 +31,7 @@ public class FeedbackTicketService {
         public List<Feedback> getAllFeedbacks() { return feedbackList; }
     // 3. EDIT (Add method here)
         public Feedback updatedFeedback(
-                String id,
+                Long id,
                 Feedback updatedFeedback
         )
         {
