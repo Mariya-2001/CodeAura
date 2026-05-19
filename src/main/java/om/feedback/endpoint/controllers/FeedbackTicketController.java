@@ -49,7 +49,7 @@ public class FeedbackTicketController {
             @RequestBody Feedback updatedFeedback
     ) {
         Feedback result = feedbackTicketService.updatedFeedback(
-                Long.valueOf(id), updatedFeedback
+                String.valueOf(id), updatedFeedback
         );
 
         //invalid ID
