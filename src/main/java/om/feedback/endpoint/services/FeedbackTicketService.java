@@ -32,7 +32,7 @@ public class FeedbackTicketService {
         public List<Feedback> getAllFeedbacks() { return feedbackList; }
     // 3. EDIT (Add method here)
         public Feedback updatedFeedback(
-                Long id,
+                String id,
                 Feedback updatedFeedback
         )
         {
@@ -40,7 +40,7 @@ public class FeedbackTicketService {
                 for(Feedback feedback : feedbackList){
 
                         //check matching ID
-                        if(feedback.getId().equals(id)){
+                        if(feedback.getId().trim().equals(id.trim())){
 
                                 //update content
                                 feedback.setContent(
@@ -56,7 +56,7 @@ public class FeedbackTicketService {
         }
         // 4. DELETE
         public boolean deleteFeedback(String id){
-                return feedbackList.removeIf(feedback -> feedback.getId().equals(id));
+                return feedbackList.removeIf(feedback -> feedback.getId().trim().equals(id.trim()));
         }
 
 }
