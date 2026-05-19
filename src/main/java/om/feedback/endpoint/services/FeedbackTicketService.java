@@ -4,17 +4,19 @@ import om.feedback.endpoint.models.Feedback;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class FeedbackTicketService {
         // Shared In-Memory List
         private final List<Feedback> feedbackList = new ArrayList<>();
+        private final AtomicLong idCounter = new AtomicLong(0);
 
         // 1. CREATE (Add method here)
         public Feedback createFeedback(Feedback feedback) {
 
                 // Generate unique ID for the feedback
-                String id = java.util.UUID.randomUUID().toString();
+                String id = String.valueOf(idCounter.incrementAndGet());
 
                 // Set the generated ID into the object
                 feedback.setId(id);
@@ -26,7 +28,6 @@ public class FeedbackTicketService {
                 return feedback;
         }
 
-        // 2. VIEW ALL
         // 2. VIEW ALL - Returns all feedback entries from in-memory list
         public List<Feedback> getAllFeedbacks() { return feedbackList; }
     // 3. EDIT (Add method here)
